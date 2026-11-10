@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171329">
+  <title>Last Day Vanda — Party Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">✦</span> LAST DAY VANDA</a>
+    <nav><a href="#about">About</a><a href="#join">Join</a><a href="#members">Members</a><button class="nav-admin" id="adminOpen">Admin</button></nav>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <div class="hero-glow"></div><div class="hero-content">
+        <p class="eyebrow">✦ ONE NIGHT. GREAT MEMORIES. ✦</p>
+        <h1>LAST DAY<br><span>VANDA</span></h1>
+        <p class="hero-copy">You're invited to celebrate with us.<br>Bring your energy, your smile, and let's make it unforgettable.</p>
+        <a class="button primary" href="#join">JOIN THE PARTY <span>↗</span></a>
+        <p class="hero-note">Your place is one click away.</p>
+      </div>
+      <div class="orb orb-one"></div><div class="orb orb-two"></div><div class="spark spark-one">✦</div><div class="spark spark-two">✧</div>
+    </section>
+
+    <section class="event-strip">
+      <div><span class="strip-icon">✧</span><span><small>THE EVENT</small><strong>Last Day Vanda Party</strong></span></div>
+      <div><span class="strip-icon">◷</span><span><small>DATE & TIME</small><strong>To be announced</strong></span></div>
+      <div><span class="strip-icon">⌖</span><span><small>LOCATION</small><strong>Details coming soon</strong></span></div>
+    </section>
+
+    <section class="section join-section" id="join">
+      <div class="section-heading"><p class="eyebrow">SAVE YOUR SPOT</p><h2>Be part of the <em>moment.</em></h2><p>Register below and your name will be added to the guest list.</p></div>
+      <form id="joinForm" class="panel form-panel">
+        <label>Full name <input name="name" required maxlength="80" placeholder="Enter your name"></label>
+        <label>Email address <span class="optional">(optional)</span><input name="email" type="email" maxlength="254" placeholder="you@example.com"></label>
+        <label>Phone number <span class="optional">(optional)</span><input name="phone" maxlength="30" placeholder="+855 ..."></label>
+        <button class="button primary full" type="submit">CONFIRM MY SPOT <span>→</span></button>
+        <p class="form-message" id="joinMessage" role="status"></p>
+        <p class="privacy-note">Your contact details are only visible to the event administrator.</p>
+      </form>
+    </section>
+
+    <section class="section members-section" id="members">
+      <div class="members-head"><div class="section-heading left"><p class="eyebrow">THE GUEST LIST</p><h2>Who's <em>coming?</em></h2><p>Meet the people joining the celebration.</p></div><div class="member-count"><strong id="memberCount">—</strong><span>REGISTERED</span></div></div>
+      <div id="memberList" class="member-grid"><div class="empty-state">Loading guest list…</div></div>
+      <p class="list-note">Only registered names are shown here.</p>
+    </section>
+
+    <section class="share-banner"><div><p class="eyebrow">GOOD TIMES ARE BETTER TOGETHER</p><h2>Invite your people.</h2><p>Share the invitation and bring your friends along.</p></div><button class="button light" id="shareButton">SHARE INVITATION ↗</button></section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">✦</span> LAST DAY VANDA</a><span>Made for memories. ✦</span></footer>
+
+  <div class="modal-backdrop hidden" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+    <div class="modal panel">
+      <button class="modal-close" id="adminClose" aria-label="Close">×</button>
+      <div id="loginView">
+        <p class="eyebrow">PRIVATE AREA</p><h2 id="adminTitle">Admin login</h2><p class="muted">Sign in to manage party registrations.</p>
+        <form id="loginForm"><label>Email<input name="email" type="email" required autocomplete="username"></label><label>Password<input name="password" type="password" required autocomplete="current-password"></label><button class="button primary full" type="submit">SIGN IN</button><p class="form-message" id="loginMessage" role="status"></p></form>
+      </div>
+      <div id="dashboardView" class="hidden">
+        <div class="dashboard-title"><div><p class="eyebrow">CONTROL ROOM</p><h2>Guest dashboard</h2></div><button class="button outline" id="logoutButton">LOG OUT</button></div>
+        <div class="dashboard-stats"><div><strong id="dashTotal">0</strong><span>TOTAL GUESTS</span></div><div><strong id="dashToday">0</strong><span>JOINED TODAY</span></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th></tr></thead><tbody id="adminRows"></tbody></table></div>
+        <button class="button outline full" id="exportButton">DOWNLOAD GUEST LIST (CSV)</button>
+      </div>
+    </div>
+  </div>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
